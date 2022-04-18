@@ -18,6 +18,7 @@ jobs:
         cmd: |
           install
           build
+          start
     - name: Katalon Studio Github Action
       uses: katalon-studio/katalon-studio-github-action@v2
       with:
