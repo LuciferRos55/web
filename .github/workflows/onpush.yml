@@ -12,8 +12,6 @@ jobs:
     - name: Install dependencies
         run:
           yarn install
-          yarn run build
-          yarn start
     - name: Checkout
       uses: actions/checkout@v2.1
     - name: Katalon Studio Github Action
