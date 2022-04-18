@@ -15,9 +15,19 @@ jobs:
     - name: Install dependencies
       uses: borales/actions-yarn@v2.3.0
       with:
-        cmd: |
+        cmd:
           install
           build
+          start
+    - name: Build dependencies
+      uses: borales/actions-yarn@v2.3.0
+      with:
+        cmd:
+          build
+    - name: Start dependencies
+      uses: borales/actions-yarn@v2.3.0
+      with:
+        cmd:
           start
     - name: Katalon Studio Github Action
       uses: katalon-studio/katalon-studio-github-action@v2
