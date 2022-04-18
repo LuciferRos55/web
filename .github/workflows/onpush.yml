@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
     - name: Install dependencies
-        run: |
+        run:
           yarn install
           yarn run build
           yarn start
