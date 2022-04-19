@@ -11,15 +11,19 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: "Install Node"
-          uses: actions/setup-node@v1
-          with:
-            node-version: "12.x"
+        uses: actions/setup-node@v1
+        with:
+          node-version: "12.x"
       - name: "Install global packages"
         run: npm install -g yarn prisma-cli concurrently mocha
       - name: "Run docker Container"
         run: docker-compose -f docker-compose.yml up --build -d
       - name: "Install deps"
         run: yarn install
+      - name: "prisma deploy"
+        run: yarn deploy:backend
+      - name: "Seed Backend"
+        run: yarn seed:backend
       - name: "Build app"
         run: yarn build
       - name: "Start backend and frontend concurrently on background and run tests"
