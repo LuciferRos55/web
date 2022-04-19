@@ -38,7 +38,7 @@ function LoginPage() {
       setDisabled(false)
     }
     else {
-      setDisabled(true)
+      setDisabled(false)
     }
 
   }, [captchaToken])
@@ -67,15 +67,7 @@ function LoginPage() {
     e.preventDefault()
     setLoadingLogin(true)
 
-    await axios.post('/login-with-captcha',
-      {
-        token: captchaToken
-      })
-      .then(response => {
-        let { success } = response.data
-
-        if (success) {
-          auth
+    auth
             .signInWithEmailAndPassword(email, password)
             .then((auth) => {
               if (auth) {
@@ -91,16 +83,6 @@ function LoginPage() {
                 handleOpenSnackbar(message, 'error')
               }
             })
-        }
-        else {
-          let message = 'You are not human or reCaptchaFail. Please reload page!'
-          handleOpenSnackbar(message, 'error')
-        }
-      })
-      .catch(error => {
-        console.log(error, 'google response');
-      })
-
     setLoadingLogin(false)
   }
 

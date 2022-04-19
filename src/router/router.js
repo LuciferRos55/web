@@ -54,7 +54,7 @@ export default function MainRouter() {
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
-        let waiting = setTimeout(() => setLoading(false), 1000)
+        let waiting = setTimeout(() => setLoading(false), 500)
 
         return () => {
             clearTimeout(waiting)
