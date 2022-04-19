@@ -29,7 +29,7 @@ jobs:
         run: |
           yarn start &
           sleep 20 &&
-          curl http://localhost:8000 &&
+          curl http://localhost:3000 &&
           yarn test
       - name: Katalon Github Action
         uses: katalon-studio/katalon-studio-github-action@v2
