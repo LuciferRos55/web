@@ -16,17 +16,19 @@ jobs:
           node-version: "14.x"
       - name: "Install global packages"
         run: npm install -g yarn prisma-cli concurrently mocha
-      - name: "Install deps"
-        run: yarn install
-      - name: "Build app"
+      - name: "Install build start test deps"
         env: 
           CI: false
-        run: yarn run build
-      - name: "Start and run tests"
-        uses: actions/checkout@v2
-        with:
-          start: yarn start
-          wait-on: 'http://localhost:3000'
+        run: |
+          yarn install &
+          yarn run build
+      
+      - name: "Start test deps"
+        env: 
+          CI: false
+        run: |
+          yarn start &
+          yarn test
       - name: Katalon Github Action
         uses: katalon-studio/katalon-studio-github-action@v2
         with:
