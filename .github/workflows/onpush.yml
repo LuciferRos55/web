@@ -16,10 +16,10 @@ jobs:
           node-version: "14.x"
       - name: "Install global packages"
         run: npm install -g yarn prisma-cli concurrently mocha
-      - name: "Install start test deps"
+      - name: "Install deps"
         run:
           yarn install
-      - name: "Build start test deps"
+      - name: "Build deps"
         env: 
           CI: false
         run:
