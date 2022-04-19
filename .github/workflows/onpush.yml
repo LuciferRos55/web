@@ -13,19 +13,19 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
     - name: Install dependencies
-      uses: borales/actions-yarn@v1.22.18
+      uses: borales/actions-yarn@v2.3.0
       with:
         cmd:
           install
     - name: Build dependencies
       env: 
         CI: false
-      uses: borales/actions-yarn@v1.22.18
+      uses: borales/actions-yarn@v2.3.0
       with:
         cmd:
           build
     - name: Start dependencies
-      uses: borales/actions-yarn@v1.22.18
+      uses: borales/actions-yarn@v2.3.0
       with: 
         cmd: |
           start &
