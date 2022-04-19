@@ -3,12 +3,10 @@
 # dependencies
 /functions
 /functions/node_modules
-/node_modules
 /.pnp
 .pnp.js
-/yarn.lock
-/package-lock.json
 .eslintcache
+/node_modules
 # testing
 /coverage
 
