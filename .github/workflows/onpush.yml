@@ -23,6 +23,7 @@ jobs:
           CI: false
         run: yarn run build
       - name: "Start and run tests"
+        uses: actions/checkout@v2
         with:
           start: yarn start
           wait-on: 'http://localhost:3000'
