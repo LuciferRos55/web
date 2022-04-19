@@ -13,22 +13,24 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
     - name: Install dependencies
-      uses: borales/actions-yarn@v2.3.0
+      uses: borales/actions-yarn@v1.22.18
       with:
         cmd:
           install
     - name: Build dependencies
       env: 
         CI: false
-      uses: borales/actions-yarn@v2.3.0
+      uses: borales/actions-yarn@v1.22.18
       with:
         cmd:
           build
     - name: Start dependencies
-      uses: borales/actions-yarn@v2.3.0
-      with:
-        cmd:
-          start
+      uses: borales/actions-yarn@v1.22.18
+      with: 
+        cmd: |
+          start &
+          test
+    
     - name: Katalon Github Action
       uses: katalon-studio/katalon-studio-github-action@v2
       with:
