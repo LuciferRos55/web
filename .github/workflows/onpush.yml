@@ -19,6 +19,8 @@ jobs:
       - name: "Install deps"
         run: yarn install
       - name: "Build app"
+        env: 
+          CI: false
         run: yarn run build
       - name: "Start and run tests"
         uses: ./
