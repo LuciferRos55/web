@@ -16,22 +16,17 @@ jobs:
           node-version: "12.x"
       - name: "Install global packages"
         run: npm install -g yarn prisma-cli concurrently mocha
-      - name: "Run docker Container"
-        run: docker-compose -f docker-compose.yml up --build -d
       - name: "Install deps"
         run: yarn install
-      - name: "prisma deploy"
-        run: yarn deploy:backend
-      - name: "Seed Backend"
-        run: yarn seed:backend
       - name: "Build app"
-        run: yarn build
-      - name: "Start backend and frontend concurrently on background and run tests"
-        run: |
-          yarn start &
-          sleep 10 &&
-          curl http://localhost:3000 &&
-          yarn test
+        run: yarn run build
+      - name: "Start and run tests"
+        uses: ./
+        with:
+          working-directory: examples/start-and-yarn-workspaces/workspace-1
+          build: yarn run build
+          start: yarn start
+          wait-on: 'http://localhost:3000'
       - name: Katalon Github Action
         uses: katalon-studio/katalon-studio-github-action@v2
         with:
