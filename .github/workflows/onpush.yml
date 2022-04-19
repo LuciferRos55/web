@@ -28,8 +28,7 @@ jobs:
       uses: borales/actions-yarn@v2.3.0
       with: 
         cmd: |
-          start &
-          test
+          start-test 'http-server -c-1 .' 3000 'cypress run'
     
     - name: Katalon Github Action
       uses: katalon-studio/katalon-studio-github-action@v2
