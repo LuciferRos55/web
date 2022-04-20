@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-18.04
+    runs-on: windows-lastest
     steps:
       - uses: actions/checkout@v2
       - name: "Install Node"
@@ -30,3 +30,9 @@ jobs:
           yarn start &
           sleep 20 &&
           curl http://localhost:3000
+      - name: Katalon Github Action
+        uses: katalon-studio/katalon-studio-github-action@v2
+        with:
+          version: '7.5.5'
+          projectPath: '$'
+          args: ' -retry=0 -testSuitePath="Test Suites/Login test suite" -browserType="Chrome" -executionProfile="default" --config -proxy.auth.option=NO_PROXY -proxy.system.option=NO_PROXY -proxy.system.applyToDesiredCapabilities=true'
