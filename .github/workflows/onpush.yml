@@ -30,9 +30,3 @@ jobs:
           yarn start &
           sleep 20 &&
           curl http://localhost:3000
-      - name: Katalon Github Action
-        uses: katalon-studio/katalon-studio-github-action@v2
-        with:
-          version: '7.5.5'
-          projectPath: '$'
-          args: 'noSplash -runMode=console -retry=0 -testSuitePath="Test Suites/Login test suite" -browserType="Chrome" -executionProfile="default" -apiKey="62c5639e-4b0c-4d8d-8421-12587f4e097b" --config -proxy.auth.option=NO_PROXY -proxy.system.option=NO_PROXY -proxy.system.applyToDesiredCapabilities=true'

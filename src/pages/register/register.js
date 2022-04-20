@@ -37,7 +37,7 @@ function Register() {
       setDisabled(false)
     }
     else {
-      setDisabled(true)
+      setDisabled(false)
     }
 
   }, [captchaToken])
@@ -83,15 +83,7 @@ function Register() {
     e.preventDefault()
     setLoading(true)
 
-    await axios.post('/login-with-captcha',
-      {
-        token: captchaToken
-      })
-      .then(response => {
-        let { success } = response.data
-
-        if (success) {
-
+    
           //Firebase createUser
           auth
             .createUserWithEmailAndPassword(email, password)
@@ -106,15 +98,6 @@ function Register() {
               console.log(error)
               handleOpenSnackbar(error.message)
             })
-        }
-        else {
-          let message = 'You are not human or reCaptchaFail. Please reload page!'
-          handleOpenSnackbar(message)
-        }
-      })
-      .catch(error => {
-        console.log(error, 'google response');
-      })
 
 
     setLoading(false)
