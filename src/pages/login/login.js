@@ -97,7 +97,7 @@ function LoginPage() {
         handleOpenSnackbar('Sent reset password link. Check your email', 'success')
       })
       .catch((err) => {
-        handleOpenSnackbar(err.message, 'error'
+        handleOpenSnackbar(err.message, 'error')
       })
   }
 
